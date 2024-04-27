@@ -21,7 +21,7 @@ line.addEventListener("click", () =>{
 
 space.addEventListener("click", () =>{
 
-    currentCode += " / "
+    text.innerText += " "
     console.log(currentCode)
 })
 next.addEventListener("click", () =>{
