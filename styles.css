@@ -73,7 +73,14 @@ h1{
     font-family: sans-serif;
     font-size: 20px;
     font-weight: bold;
-    position: absolute;
-    top: 0;
+    top: 30;
+    right: 50;
+}
+
+h2{
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    top: 30;
     right: 50;
 }
