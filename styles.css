@@ -14,7 +14,7 @@ body {
     font-size: 10px;
     font-weight: bold;
     width: 100vw;
-    height: 25vw;
+    height: 20vw;
 }
 #LINE {
     background-color: red;
@@ -22,7 +22,7 @@ body {
     font-size: 10px;
     font-weight: bold;
     width: 100vw;
-    height: 25vw;
+    height: 20vw;
 }
 #SPACE {
     background-color: green;
@@ -30,7 +30,7 @@ body {
     font-size: 10px;
     font-weight: bold;
     width: 100vw;
-    height: 25vw;
+    height: 20vw;
 }
 #DONE {
     background-color: yellow;
@@ -38,7 +38,7 @@ body {
     font-size: 10px;
     font-weight: bold;
     width: 100vw;
-    height: 25vw;
+    height: 20vw;
 }
 #DOT:hover{
     background-color: darkblue;
@@ -50,10 +50,34 @@ body {
     font-size: 10px;
     font-weight: bold;
     width: 100vw;
-    height: 25vw;
+    height: 20vw;
 }
 #NEXT:hover{
     background-color: gray;
+}
+#AUDIO {
+    background-color: rgb(255, 0, 204);
+    border: none;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 100vw;
+    height: 20vw;
+}
+#AUDIO:hover{
+    background-color: rgb(120, 8, 94);
+}
+#REPEAT {
+    background-color: rgb(94, 255, 0);
+    border: none;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 100vw;
+    height: 20vw;
+}
+#REPEAT:hover{
+    background-color: rgb(10, 65, 2);
 }
 #LINE:hover{
     background-color: darkred;
