@@ -19,11 +19,11 @@ line.addEventListener("click", () =>{
     console.log(currentCode)
 })
 
-space.addEventListener("click", () =>{
+space.addEventListener("click", () => {
+    text.innerHTML += " ";
+    console.log(currentCode);
+});
 
-    text.innerText += " "
-    console.log(currentCode)
-})
 next.addEventListener("click", () =>{
     text.innerText += translateMorseToText(currentCode)
     currentCode = ""
