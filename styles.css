@@ -1,3 +1,13 @@
+html, body {
+    resize: none;
+    overflow: hidden;
+}
+
+body {
+    overflow-y: hidden;
+}
+
+
 #DOT {
     background-color: blue;
     border: none;
