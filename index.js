@@ -31,6 +31,7 @@ next.addEventListener("click", () =>{
 })
 done.addEventListener("click", () =>{
     currentCode = ""
+    text.innerText = ""
     console.log("SENDING MESSAGE...")
 })
 
