@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script
+      type="text/javascript"
+      src="https://rawgithub.com/hiddentao/google-tts/master/google-tts.min.js"
+    ></script>
+    <script type="importmap" defer>
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
     <script src="index.js" defer type="module"></script>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0,maximum-scale=1"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>morse code practice</title>
@@ -17,6 +28,8 @@
       <button id="SPACE">SPACE</button>
       <button id="DONE">DONE</button>
       <button id="NEXT">NEXT</button>
+      <button id="AUDIO">AUDIO</button>
+      <button id="REPEAT">REPEAT</button>
     </div>
     <h1 id="text"></h1>
     <h2 id="currentCode"></h2>
