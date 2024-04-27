@@ -1,6 +1,56 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js';
 import { getDatabase, ref as dbRef, set, onValue } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+const API_KEY = "AIzaSyB968fFd0rn8rxgX4WTMiRY-5I7ZmP783A";
+const genAI = new GoogleGenerativeAI(API_KEY);
+let dot = document.getElementById("DOT")
+let line = document.getElementById("LINE")
+let space = document.getElementById("SPACE")
+let done = document.getElementById("DONE")
+let text = document.getElementById("text")
+let next = document.getElementById("NEXT")
+let currentCodee = document.getElementById("currentCode")
+let aud = document.getElementById("AUDIO")
+let repeat = document.getElementById("REPEAT")
+let words = ""
+async function run(prompt) {
 
+  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+
+  const result = await model.generateContentStream(prompt);
+  const response = await result.response;
+  const text = response.text();
+  words = text.split(" ");
+  console.log(text);
+}
+
+
+
+let currentIndex = 0
+function playNextWord() {
+    if (currentIndex < words.length) {
+        const msg = new SpeechSynthesisUtterance(words[currentIndex]);
+        window.speechSynthesis.speak(msg);
+
+        currentIndex++;
+    } else {
+        currentIndex = 0
+        console.log("All words have been spoken.");
+    }
+}
+function repeatLastWord() {
+    if (currentIndex < words.length) {
+        const msg = new SpeechSynthesisUtterance(words[currentIndex - 1]);
+        window.speechSynthesis.speak(msg);
+
+    } else {
+        currentIndex = 0
+        console.log("All words have been spoken.");
+    }
+}
+
+aud.addEventListener("click", playNextWord);
+repeat.addEventListener("click", repeatLastWord);
 const firebaseConfig = {
     apiKey: "AIzaSyD58mivfUeYefkEimNO94G9j7VgSnSlXJU",
     authDomain: "morsecode-69559.firebaseapp.com",
@@ -12,6 +62,7 @@ const firebaseConfig = {
   };
 
 initializeApp(firebaseConfig);
+
 const db = getDatabase();
 const textRef = dbRef(db, "morseText");
 let currentText = ""
@@ -19,16 +70,8 @@ onValue(textRef, (snapshot) => {
     const storedText = snapshot.val(); // Get the value from the snapshot
     console.log("Stored text:", storedText);
     text.innerText = storedText
-    // You can update your UI or perform other actions with the retrieved value
 });
 
-let dot = document.getElementById("DOT")
-let line = document.getElementById("LINE")
-let space = document.getElementById("SPACE")
-let done = document.getElementById("DONE")
-let text = document.getElementById("text")
-let next = document.getElementById("NEXT")
-let currentCodee = document.getElementById("currentCode")
 
 
 let currentCode = ""
@@ -64,10 +107,15 @@ next.addEventListener("click", () =>{
     console.log(currentCode)
 })
 done.addEventListener("click", () =>{
-
+    onValue(textRef, (snapshot) => {
+        const storedText = snapshot.val(); // Get the value from the snapshot
+        console.log("Stored text:", storedText);
+        run(storedText + " scrie tot Scurt si la Obiect in limba engleza")
+    });
+    
     currentCode = ""
     currentCodee.innerText += ""
-
+    
     currentText = ""
     set(textRef, currentText)
 
